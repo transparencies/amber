@@ -28,8 +28,6 @@ jobs:
 
         toolchain:
         - 1.94.1
-        - stable
-        - nightly
 
     steps:
     - uses: actions/checkout@v6
