@@ -1,10 +1,12 @@
 use anyhow::*;
 use std::path::Path;
-use vergen::EmitBuilder;
+use vergen_gix::{Emitter, GixBuilder};
 
 fn main() -> Result<()> {
     if Path::new(".git").exists() {
-        EmitBuilder::builder().git_sha(true).emit()
+        Emitter::default()
+            .add_instructions(&GixBuilder::all_git()?)?
+            .emit()
     } else {
         Ok(())
     }
